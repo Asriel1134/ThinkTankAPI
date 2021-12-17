@@ -21,9 +21,9 @@ public interface HistoryMapper {
     @Insert("insert into history(userid, entryid) values(#{userid},#{entryid})")
     int addHistory(History history);
 
-    @Select("SELECT * FROM history WHERE userid = #{userid} order by date")
+    @Select("SELECT * FROM history WHERE userid = #{userid} order by date desc")
     List<History> getHistoryList(History history);
 
-    @Select("select * from entry where entryid = #{id}")
+    @Select("select entryid,title,`describe`,date,createdate from entry where entryid = #{id}")
     Entry getEntryFromId(long id);
 }

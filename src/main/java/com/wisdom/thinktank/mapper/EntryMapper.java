@@ -26,4 +26,13 @@ public interface EntryMapper {
 
     @Select("select * from entry where entryid = #{id}")
     Entry getEntryFromId(long id);
+
+    @Select("SELECT entryid,title,`describe`,date,createdate,heat,image FROM entry WHERE image != \"\" ORDER BY heat DESC LIMIT 7;")
+    List<Entry> getEntryOrderByHeat();
+
+    @Select("SELECT entryid,title,`describe`,date,createdate,heat,image FROM entry WHERE date LIKE #{date};")
+    List<Entry> getSameDayEntry(String date);
+
+    @Select("select entryid,title,`describe`,date,createdate,heat,image from entry order by rand() LIMIT 3;")
+    List<Entry> getRandomEntry();
 }

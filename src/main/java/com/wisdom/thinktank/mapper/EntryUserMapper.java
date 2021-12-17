@@ -2,7 +2,6 @@ package com.wisdom.thinktank.mapper;
 
 import com.wisdom.thinktank.entity.Entry;
 import com.wisdom.thinktank.entity.EntryUser;
-import com.wisdom.thinktank.entity.History;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -16,6 +15,6 @@ public interface EntryUserMapper {
     @Select("SELECT * FROM entry_user WHERE userid = #{userid}")
     List<EntryUser> getEntryUserList(long userid);
 
-    @Select("select * from entry where entryid = #{id}")
+    @Select("select entryid,title,`describe`,date,createdate from entry WHERE entryid = #{id}")
     Entry getEntryFromId(long id);
 }

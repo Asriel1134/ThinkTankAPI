@@ -19,7 +19,7 @@ public interface UserMapper {
     @Insert("insert into user(mail,username,password) values(#{mail},#{username},SHA1(#{password}))")
     int addUser(User user);
 
-    @Select("select * from user where mail = #{mail}")
+    @Select("select userid,mail,username,photo,gender from user where mail = #{mail}")
     List<User> isUserExist(User user);
     
     @Select("SELECT userid, mail, username, photo, gender from `user` WHERE mail = #{mail} AND `password` =  SHA1(#{password})")

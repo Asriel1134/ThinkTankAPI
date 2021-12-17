@@ -19,4 +19,10 @@ public interface EntryService {
         Entry getEntry(String title);
 
         Entry getEntryFromId(long id);
+
+        List<Entry> getEntryOrderByHeat();
+
+        Entry getSameDayEntry();
+
+        List<Entry> getRandomEntry();
 }

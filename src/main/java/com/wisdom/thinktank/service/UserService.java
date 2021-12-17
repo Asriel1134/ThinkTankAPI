@@ -15,7 +15,7 @@ public interface UserService {
 
         boolean isUserExist(User user);
 
-        public User getUserInfo(User user);
+        User getUserInfo(User user);
 
         User login(User user);
 
@@ -26,4 +26,6 @@ public interface UserService {
         String rePassword(String mail, String newPassword);
 
         String rePhoto(String photoUrl, String mail);
+
+
 }

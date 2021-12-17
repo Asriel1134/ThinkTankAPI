@@ -22,9 +22,9 @@ public interface CollectionMapper {
     @Insert("insert into collection(userid, entryid) values(#{userid},#{entryid})")
     int addCollection(Collection collection);
 
-    @Select("SELECT * FROM collection WHERE userid = #{userid} order by date")
+    @Select("SELECT * FROM collection WHERE userid = #{userid} order by date desc")
     List<Collection> getCollectionList(Collection collection);
 
-    @Select("select * from entry where entryid = #{id}")
+    @Select("select entryid,title,`describe`,date,createdate from entry where entryid = #{id}")
     Entry getEntryFromId(long id);
 }

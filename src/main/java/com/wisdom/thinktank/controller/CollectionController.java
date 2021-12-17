@@ -26,6 +26,19 @@ public class CollectionController {
     @Autowired
     private CollectionServiceImpl collectionService;
 
+    @PostMapping("/isCollectionExist")
+    public String isCollectionExist(Collection collection) {
+        JSONObject isCollectionExistJson = new JSONObject();
+        if (collectionService.isCollectionExist(collection)){
+            isCollectionExistJson.put("result", 0);
+            isCollectionExistJson.put("info", "Collection already exist");
+        } else {
+            isCollectionExistJson.put("result", -7);
+            isCollectionExistJson.put("info", "Collection does not exist");
+        }
+        return isCollectionExistJson.toJSONString();
+    }
+
     @PostMapping("/addCollection")
     public String addCollection(Collection collection) {
         JSONObject addCollectionJson = new JSONObject();

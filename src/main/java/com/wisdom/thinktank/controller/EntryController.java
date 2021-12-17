@@ -70,4 +70,12 @@ public class EntryController {
         }
         return getEntryJson.toJSONString();
     }
+
+    @PostMapping("/getRandomEntry")
+    public String getRandomEntry(){
+        JSONObject getRandomEntryJson = new JSONObject();
+        getRandomEntryJson.put("result", 0);
+        getRandomEntryJson.put("entry", entryServer.getRandomEntry());
+        return getRandomEntryJson.toJSONString();
+    }
 }

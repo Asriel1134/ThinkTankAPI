@@ -9,6 +9,8 @@ import com.wisdom.thinktank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -44,5 +46,23 @@ public class EntryServiceImpl implements EntryService {
     @Override
     public Entry getEntryFromId(long id) {
         return entryMapper.getEntryFromId(id);
+    }
+
+    @Override
+    public List<Entry> getEntryOrderByHeat() {
+        return entryMapper.getEntryOrderByHeat();
+    }
+
+    @Override
+    public Entry getSameDayEntry() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = df.format(new Date());
+        date = date.substring(4, 10);
+        return entryMapper.getSameDayEntry("____" + date + "_________").get(0);
+    }
+
+    @Override
+    public List<Entry> getRandomEntry() {
+        return entryMapper.getRandomEntry();
     }
 }
