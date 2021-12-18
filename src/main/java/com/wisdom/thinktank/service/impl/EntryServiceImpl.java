@@ -58,7 +58,7 @@ public class EntryServiceImpl implements EntryService {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = df.format(new Date());
         date = date.substring(4, 10);
-        return entryMapper.getSameDayEntry("____" + date + "_________").get(0);
+        return entryMapper.getSameDayEntry("____" + date + "_________");
     }
 
     @Override
